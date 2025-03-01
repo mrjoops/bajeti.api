@@ -1,0 +1,48 @@
+account_delete:
+    controller: App\Controller\ApiController
+    defaults:
+        type: App\Message\DeleteAccountMessage
+    methods: [DELETE]
+    path: /api/accounts/{id}
+
+account_fetch:
+    controller: App\Controller\ApiController
+    defaults:
+        type: App\Message\FetchAccountMessage
+    methods: [GET]
+    path: /api/accounts/{id}
+
+account_update:
+    controller: App\Controller\ApiController
+    defaults:
+        type: App\Message\UpdateAccountMessage
+    methods: [PUT]
+    path: /api/accounts/{id}
+
+budget_create:
+    controller: App\Controller\ApiController
+    defaults:
+        type: App\Message\CreateBudgetMessage
+    methods: [POST]
+    path: /api/budgets
+
+budget_fetch:
+    controller: App\Controller\ApiController
+    defaults:
+        type: App\Message\FetchBudgetMessage
+    methods: [GET]
+    path: /api/budgets/{id}
+
+budget_list:
+    controller: App\Controller\ListController
+    defaults:
+        type: App\Message\ListBudgetsMessage
+    methods: [GET]
+    path: /api/budgets
+
+account_operations_list:
+    controller: App\Controller\ApiController
+    defaults:
+        type: App\Message\ListAccountOperationsMessage
+    methods: [GET]
+    path: /api/accounts/{id}/operations
