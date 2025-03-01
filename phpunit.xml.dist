@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          backupGlobals="false"
-         colors="true"
+         beStrictAboutCoverageMetadata="true"
+         beStrictAboutOutputDuringTests="true"
          bootstrap="tests/bootstrap.php"
-         convertDeprecationsToExceptions="false"
+         cacheDirectory=".cache/phpunit"
+         colors="true"
+         displayDetailsOnPhpunitDeprecations="true"
+         executionOrder="depends,defects"
+         failOnPhpunitDeprecation="true"
+         failOnRisky="true"
+         failOnWarning="true"
+         requireCoverageMetadata="true"
 >
     <php>
         <ini name="display_errors" value="1" />
@@ -18,21 +24,25 @@
     </php>
 
     <testsuites>
-        <testsuite name="Project Test Suite">
+        <testsuite name="default">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
 
-    <coverage processUncoveredFiles="true">
+    <coverage includeUncoveredFiles="true" pathCoverage="true">
+        <report>
+            <clover outputFile="test-reports/clover.xml"/>
+        </report>
+    </coverage>
+    
+    <logging>
+        <junit outputFile="test-reports/junit.xml"/>
+    </logging>
+
+    <source ignoreIndirectDeprecations="true" restrictNotices="true" restrictWarnings="true">
         <include>
             <directory suffix=".php">src</directory>
         </include>
-    </coverage>
+    </source>
 
-    <listeners>
-        <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener" />
-    </listeners>
-
-    <extensions>
-    </extensions>
 </phpunit>

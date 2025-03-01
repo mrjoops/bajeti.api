@@ -13,18 +13,17 @@ phpstan.neon
 ###< phpstan/phpstan ###
 
 ###> squizlabs/php_codesniffer ###
-/.phpcs-cache
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
 
+.cache
 /nbproject/private/
-
-###> symfony/phpunit-bridge ###
-.phpunit.result.cache
-/phpunit.xml
-###< symfony/phpunit-bridge ###
+/test-reports
 
 ###> phpunit/phpunit ###
 /phpunit.xml
-.phpunit.cache
 ###< phpunit/phpunit ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+###< friendsofphp/php-cs-fixer ###

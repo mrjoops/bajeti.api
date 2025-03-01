@@ -23,8 +23,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-    get_set_method_normalizer:
-        class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
+    json_exception_listener:
+        class: App\EventListener\JsonExceptionListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 200 }
+
+    property_normalizer:
+        class: Symfony\Component\Serializer\Normalizer\PropertyNormalizer
         tags: [serializer.normalizer]
 
     # Attribute mapping driver for the Doctrine Extension listeners
